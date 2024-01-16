@@ -1,6 +1,6 @@
 # PROJECT TITLE: Auzmor UI Automation Framework
 
-## LINK: [[Auzmor Application](https://office-qa.auzmor.com/login)](https://office-qa.auzmor.com/login
+## LINK: https://office-qa.auzmor.com/login
 )
 
 ### Credentials:
