@@ -84,6 +84,9 @@ The framework follows the Page Object Model (POM) design pattern and includes:
   - **ReadPropertiesFile:** Reads configuration properties from the config.properties file.
   - **UtilityFile:** Handles screenshot functionalities.
 
+- **Resources**
+ - Contains the Configuration Properties.
+
 - **TestCases:** Test class implementing scenarios for auzmor automation.
   - **FeedPostProcessTest** Test class for creating and verifying the polls.
   - **QuestionOptionsVerificationTest** Test class for verifying question and options with sufficient details.
