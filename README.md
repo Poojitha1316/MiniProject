@@ -1,6 +1,7 @@
 # PROJECT TITLE: Auzmor UI Automation Framework
 
-## LINK: [Auzmor Application](https://office-qa.auzmor.com/login)
+## LINK: [[Auzmor Application](https://office-qa.auzmor.com/login)](https://office-qa.auzmor.com/login
+)
 
 ### Credentials:
 - Username: dohutoja.ohabufi@jollyfree.com
