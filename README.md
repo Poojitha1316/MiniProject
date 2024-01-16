@@ -1,5 +1,11 @@
 # PROJECT TITLE: Auzmor UI Automation Framework
 
+## LINK: [Auzmor Application](https://office-qa.auzmor.com/login)
+
+### Credentials:
+- Username: dohutoja.ohabufi@jollyfree.com
+- Password: Password1@
+
 ## PROBLEM STATEMENT SCENARIO:
 
 ### Navigate to the Social Feed:
@@ -27,11 +33,6 @@
 14. Verify that the poll cannot be submitted with insufficient options.
 15. Check if the submitted poll is visible on the feed page.
 
-## LINK: [Auzmor Application](https://office-qa.auzmor.com/login)
-
-### Credentials:
-- Username: dohutoja.ohabufi@jollyfree.com
-- Password: Password1@
 
 ## OVERVIEW:
 
@@ -41,11 +42,11 @@ This repository contains an automated testing framework designed for the Auzmor 
 
 Before running the tests, ensure you have the following installed:
 
-Java Development Kit (JDK)
-Maven
-Selenium
-TestNG
-Chrome Browser
+- Java Development Kit (JDK)
+- Maven
+- Selenium
+- TestNG
+- Chrome Browser
 
 ## REQUIREMENTS:
 
@@ -70,22 +71,26 @@ Chrome Browser
 
 The framework follows the Page Object Model (POM) design pattern and includes:
 
-- **src/main/java/BaseTest:** BaseTest contains the BaseClass with common methods for navigating and interacting with the application.
+- **BaseTest Package:** BaseTest contains the BaseClass with common methods for navigating and interacting with the application.
 
-- **src/main/java/PageObjects:** It contains all the page classes representing different pages of the Social Feed application.
-  - **/FeedPage:** Page class for interacting with the Social Feed.
-  - **/LoginPage:** Page class for logging into the Auzmor website.
-  - **/PollCreationPage:** Page class for creating and submitting polls.
-  - **/VerifySubmittedPollPage:** Page class for verifying the submitted poll.
+- **PageObjects Package:** It contains all the page classes representing different pages of the Social Feed application.
+  - **FeedPage:** Page class for interacting with the Social Feed.
+  - **LoginPage:** Page class for logging into the Auzmor website.
+  - **PollCreationPage:** Page class for creating and submitting polls.
+  - **VerifySubmittedPollPage:** Page class for verifying the submitted poll.
 
-- **src/main/java/Utilities:** Utility classes for handling common functionalities.
-  - **/ReadPropertiesFile:** Reads configuration properties from the config.properties file.
-  - **/UtilityFile:** Handles screenshot functionalities.
+- **Utilities Package:** Utility package for handling common functionalities.
+  - **ReadPropertiesFile:** Reads configuration properties from the config.properties file.
+  - **UtilityFile:** Handles screenshot functionalities.
 
-- **src/test/java/SocialFeedTest:** Test class implementing scenarios for social feed automation.
-  - **/PollCreationTest:** Test class for creating and submitting polls.
+- **TestCases:** Test class implementing scenarios for auzmor automation.
+  - **FeedPostProcessTest** Test class for creating and verifying the polls.
+  - **QuestionOptionsVerificationTest** Test class for verifying question and options with sufficient details.
 
 - **pom.xml:** It contains configuration information related to the project's build process, dependencies, plugins, and other settings.
+
+- **Screenshots:**
+Captures the screenshots in case of failures.
 
 ## PROJECT INFORMATION:
 
@@ -104,26 +109,46 @@ The framework follows the Page Object Model (POM) design pattern and includes:
 
 ### TEST CASE-1 (Navigate to Social Feed and Create Poll):
 
-1. Open the application and navigate to the Social Feed.
-2. Click on the "Feed" tab.
-3. Initiate a new post by clicking on the "What’s on your mind" section.
-4. Add content to the post.
-5. Click on the "Polls" CTA to create a poll.
-6. Enter a relevant poll question.
-7. Add at least two poll options.
-8. Select a poll duration.
-9. Click on the "Add a poll" button.
+**BeforeMethod:** (performLoginAndNavigateToFeed):
 
-### TEST CASE-2 (Submit Poll and Verify Visibility):
+ - Initializes the WebDriver and opens the browser.
+ - Logs into the application using login credentials specified in the loginDetails method of the LoginPage.
+ - Navigates to the Feed page using the feedDetails method of the FeedPage.
 
-10. Click on the "Submit Post" button to publish the poll.
-11. Return to the Social Feed.
-12. Check if the submitted poll is visible on the feed page.
+**Test Method:** (testFeedPostProcess):
+ 
+ - Performs the actual test by creating a new poll using the PollCreation page.
 
-### TEST CASE-3 (Additional Verifications):
+**AfterMethod:** (verifySubmittedPoll):
 
-13. Verify that the poll cannot be submitted without a valid question.
-14. Verify that the poll cannot be submitted with insufficient options.
-15. Check if the submitted poll is visible on the feed page.
+ - Verifies the submitted poll result by calling the verifyResult method of the VerifySubmittedPoll page.
+
+### TEST CASE-2 (Question Options Verification Test):
+
+**BeforeMethod:** (loginAndNavigateToFeed):
+
+ - Initializes the WebDriver and opens the browser.
+ - Logs into the application using login credentials specified in the loginDetails method of the LoginPage.
+ - Navigates to the Feed page using the feedDetails method of the FeedPage.
+
+**Test Methods:**
+
+ - testEmptyAndCharacterQuestions: Creates two instances of PollCreation to verify submissions with an empty question and a character in the question.
+ - testInsufficientOptions: Creates an instance of PollCreation to verify submission with insufficient options.
+
+**AfterMethod:** (captureScreenshotOnFailure):
+
+ - Captures a screenshot using the takingScreenshot method from the Utility class in case of test failure.
+
+### General Notes:
+
+- Both test cases share a common setup: initializing the browser and navigating to the home page.
+- Test methods interact with different pages (e.g., LoginPage, FeedPage, PollSubmittionPage, VerifySubmittedPoll) to perform specific actions and fetch details.
+- Assertions are used to validate the correctness of fetched poll details.
+- Screenshots are taken and saved in case of an exception, providing a visual record of issues.
+- Annotations (@BeforeMethod and @AfterMethod) help in setting up and tearing down the test environment before and after each test method.
+  
+####Conclusion:
+This automation framework provides a robust solution for testing the auzmor platform, ensuring clean code, readability, and maintainability. The framework is designed to be platform-independent, supporting local and distributed testing using Selenium Grid. Follow the provided instructions in the README file to set up and execute the tests seamlessly.
 
 
