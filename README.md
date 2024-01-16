@@ -149,7 +149,7 @@ Captures the screenshots in case of failures.
 - Screenshots are taken and saved in case of an exception, providing a visual record of issues.
 - Annotations (@BeforeMethod and @AfterMethod) help in setting up and tearing down the test environment before and after each test method.
   
-####Conclusion:
+#### Conclusion:
 This automation framework provides a robust solution for testing the auzmor platform, ensuring clean code, readability, and maintainability. The framework is designed to be platform-independent, supporting local and distributed testing using Selenium Grid. Follow the provided instructions in the README file to set up and execute the tests seamlessly.
 
 
